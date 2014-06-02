@@ -52,4 +52,13 @@ class PostsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_path }
+      format.json { head :no_content }
+    end
+  end
 end
